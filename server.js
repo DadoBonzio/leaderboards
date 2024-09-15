@@ -4,14 +4,14 @@ const app = express();
 app.use(express.json());
 const port = 3000;
 const cors = require('cors');
-const allowedOrigins = ['http://127.0.0.1:3001', 'http://127.0.0.1:3000', 'https://dadobonzio.github.io'];
+const allowedOrigins = ['http://127.0.0.1:3001', 'https://onrender.com', 'http://127.0.0.1:3000', 'https://dadobonzio.github.io'];
 
 app.use(cors({
     origin: (origin, callback) => {
         if (allowedOrigins.includes(origin)) {
             callback(null, origin);
         } else {
-            callback(new Error('Not allowed by CORS'));
+            callback(new Error('Not allowed by CORS: ' + origin));
         }
     }
 }));
